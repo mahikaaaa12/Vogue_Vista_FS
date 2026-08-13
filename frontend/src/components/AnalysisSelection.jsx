@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Palette, Sparkles, ChevronRight, ArrowLeft } from 'lucide-react';
 import Card from './shared/Card';
@@ -44,49 +44,7 @@ export default function AnalysisSelection({ setScreen }) {
         {/* Two Premium Selection Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
 
-          {/* Card 1: Color Palette Analysis */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Card
-              hoverable={true}
-              style={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                border: '1px solid rgba(56, 189, 248, 0.25)',
-                padding: '2.25rem'
-              }}
-            >
-              <div>
-                <div style={{ padding: '0.75rem', background: 'rgba(56, 189, 248, 0.12)', color: '#38BDF8', width: 'fit-content', borderRadius: '0.85rem', marginBottom: '1.5rem' }}>
-                  <Palette size={26} />
-                </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[#38BDF8] font-bold mb-1 block">
-                  OpenCV Chromatic Matrix
-                </span>
-                <h3 className="font-serif text-2xl font-normal text-[var(--text-primary)] mb-3">
-                  Color Palette Analysis
-                </h3>
-                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-light leading-relaxed mb-8">
-                  Identify your personal color season and receive curated palette recommendations.
-                </p>
-              </div>
-
-              <Button
-                variant="secondary"
-                onClick={() => setScreen('color-analysis')}
-                style={{ width: '100%', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38BDF8' }}
-              >
-                Start Color Analysis
-              </Button>
-            </Card>
-          </motion.div>
-
-          {/* Card 2: Body Shape Analysis */}
+          {/* Card 1: Body Shape Analysis */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,11 +81,52 @@ export default function AnalysisSelection({ setScreen }) {
                 onClick={() => setScreen('body-analysis')}
                 style={{ width: '100%' }}
               >
-                Start Body Analysis
+                Start Body Analysis <ChevronRight size={16} />
               </Button>
             </Card>
           </motion.div>
 
+          {/* Card 2: Color Palette Analysis */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Card
+              hoverable={true}
+              style={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                border: '1px solid rgba(56, 189, 248, 0.25)',
+                padding: '2.25rem'
+              }}
+            >
+              <div>
+                <div style={{ padding: '0.75rem', background: 'rgba(56, 189, 248, 0.12)', color: '#38BDF8', width: 'fit-content', borderRadius: '0.85rem', marginBottom: '1.5rem' }}>
+                  <Palette size={26} />
+                </div>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#38BDF8] font-bold mb-1 block">
+                  OpenCV Chromatic Matrix
+                </span>
+                <h3 className="font-serif text-2xl font-normal text-[var(--text-primary)] mb-3">
+                  Color Palette Analysis
+                </h3>
+                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-light leading-relaxed mb-8">
+                  Identify your personal color season and receive curated palette recommendations.
+                </p>
+              </div>
+
+              <Button
+                variant="secondary"
+                onClick={() => setScreen('color-analysis')}
+                style={{ width: '100%', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38BDF8' }}
+              >
+                Start Color Analysis <ChevronRight size={16} />
+              </Button>
+            </Card>
+          </motion.div>
         </div>
 
       </div>

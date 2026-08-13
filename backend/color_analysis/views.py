@@ -1,4 +1,4 @@
-﻿import base64
+import base64
 import re
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser

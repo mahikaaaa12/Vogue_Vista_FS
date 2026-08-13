@@ -109,7 +109,6 @@ function AppContent() {
       return null;
     }
   });
-
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
@@ -166,7 +165,6 @@ function AppContent() {
       timestamp: new Date().toISOString(),
       saved: false
     });
-
     setScreen('color-results');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

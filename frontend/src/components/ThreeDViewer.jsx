@@ -205,27 +205,86 @@ function PaletteSpheres() {
   );
 }
 
-// 5. Premium 3D Head — original GLB materials, no overrides
+// 5. Premium 3D Head + Holographic Scanner Ring & Particles
 function HologramScanner() {
   const headRef = useRef();
+  const scannerRef = useRef();
+  const particlesRef = useRef();
+
   const { scene } = useGLTF('/head.glb');
 
+  useFrame((state) => {
+    const elapsed = state.clock.getElapsedTime();
+    if (headRef.current) {
+      headRef.current.rotation.y = elapsed * 0.2;
+    }
+    if (scannerRef.current) {
+      scannerRef.current.position.y = Math.sin(elapsed * 2.5) * 0.8;
+    }
+    if (particlesRef.current) {
+      particlesRef.current.rotation.y = elapsed * 0.2;
+    }
+  });
+
+  // Generate particle points
+  const points = [];
+  for (let i = 0; i < 60; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const r = Math.random() * 0.9 + 0.1;
+    const x = Math.cos(angle) * r;
+    const z = Math.sin(angle) * r;
+    const y = Math.random() * 2 - 1;
+    points.push(new THREE.Vector3(x, y, z));
+  }
+
   return (
-    <group ref={headRef} position={[0, 0, 0]}>
-      {/* Render the model exactly as it exists in the GLB — no material override */}
-      <primitive
-        object={scene}
-        scale={5.2}
-        position={[0, -0.7, 0]}
-        rotation={[0, 0, 0]}
-      />
+    <group>
+      {/* 3D Model in the center */}
+      <group ref={headRef} position={[0, 0, 0]}>
+        <primitive
+          object={scene}
+          scale={5.2}
+          position={[0, -0.7, 0]}
+          rotation={[0, 0, 0]}
+        />
+      </group>
+
+      {/* Scanning Ring */}
+      <mesh ref={scannerRef} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.9, 0.03, 16, 100]} />
+        <meshBasicMaterial color="#C5A880" transparent opacity={0.8} wireframe />
+      </mesh>
+
+      {/* Floating particles */}
+      <points ref={particlesRef}>
+        <bufferGeometry>
+          <bufferAttribute 
+            attach="attributes-position" 
+            count={points.length} 
+            array={new Float32Array(points.flatMap(p => [p.x, p.y, p.z]))} 
+            itemSize={3} 
+          />
+        </bufferGeometry>
+        <pointsMaterial color="#C5A880" size={0.05} transparent opacity={0.6} />
+      </points>
+
+      {/* Center pedestal / cylinder beam */}
+      <mesh position={[0, 0, 0]}>
+        <cylinderGeometry args={[0.85, 0.85, 2, 32, 1, true]} />
+        <meshBasicMaterial 
+          color="#C5A880" 
+          transparent 
+          opacity={0.12} 
+          side={THREE.DoubleSide} 
+          wireframe 
+        />
+      </mesh>
     </group>
   );
 }
 
 // Preload head model at module init
 useGLTF.preload('/head.glb');
-
 // 6. Procedural Fashion-Inspired Abstract Sculpture
 function AbstractSculpture() {
   const sculptureRef = useRef();

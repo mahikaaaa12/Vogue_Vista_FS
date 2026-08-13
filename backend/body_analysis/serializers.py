@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import BodyAnalysis
+from .models import BodyAnalysis, BodyAnalysisRecord
 
 class BodyAnalysisSerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
@@ -27,3 +27,8 @@ class AnalyzeUploadSerializer(serializers.Serializer):
         if f.size > 10 * 1024 * 1024:
             raise serializers.ValidationError("Image must be ≤ 10MB.")
         return f
+
+class BodyAnalysisRecordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BodyAnalysisRecord
+        fields = '__all__'

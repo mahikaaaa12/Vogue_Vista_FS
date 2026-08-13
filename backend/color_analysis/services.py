@@ -1,4 +1,4 @@
-﻿import uuid
+import uuid
 import cv2
 import numpy as np
 from .palette_data import PALETTE_DATA

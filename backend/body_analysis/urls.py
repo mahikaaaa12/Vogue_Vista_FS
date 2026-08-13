@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import AnalyzeBodyView, HistoryView, AnalysisDetailView
+from .views import (
+    AnalyzeBodyView, HistoryView, AnalysisDetailView,
+    BodyShapeInferenceView, BodyShapeHistoryView
+)
 from .photo_views import AnalysisPhotoView, AnalyzeMeasurementsView
 
 urlpatterns = [
@@ -13,4 +16,8 @@ urlpatterns = [
     path("analyze-body/",      AnalyzeBodyView.as_view(),    name="analyze-body"),
     path("history/",           HistoryView.as_view(),        name="history"),
     path("history/<int:pk>/",  AnalysisDetailView.as_view(), name="history-detail"),
+
+    # Incoming manual measurement-based shape prediction
+    path("shape-predict/",     BodyShapeInferenceView.as_view(), name="body-shape-predict"),
+    path("shape-history/",     BodyShapeHistoryView.as_view(), name="body-shape-history"),
 ]

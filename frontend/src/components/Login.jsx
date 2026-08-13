@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { User, Lock, Mail, ArrowRight, ArrowLeft, Sun, Moon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Silk from './Silk';

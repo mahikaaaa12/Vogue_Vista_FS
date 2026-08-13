@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
-class AnalysisConfig(AppConfig):
-    default_auto_field = "django.db.models.BigAutoField"
-    name = "body_analysis"
+class BodyAnalysisConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'body_analysis'
+    verbose_name = 'Body Analysis Engine'
