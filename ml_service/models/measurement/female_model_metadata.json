@@ -1,0 +1,75 @@
+{
+    "gender": "female",
+    "selected_model": "Logistic Regression",
+    "feature_schema": [
+        "shoulder_to_hip",
+        "waist_to_hip",
+        "shoulder_to_waist",
+        "torso_aspect",
+        "symmetry",
+        "midline_offset"
+    ],
+    "classes": [
+        "apple",
+        "hourglass",
+        "inverted_triangle",
+        "pear",
+        "rectangle"
+    ],
+    "num_total_samples": 2250,
+    "dataset_class_distribution": {
+        "apple": 450,
+        "hourglass": 450,
+        "inverted_triangle": 450,
+        "pear": 450,
+        "rectangle": 450
+    },
+    "model_performance_comparison": {
+        "Logistic Regression": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "confusion_matrix": [
+                [
+                    90,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    90,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    90,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    90,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                    90
+                ]
+            ],
+            "cv_f1_macro_mean": 1.0,
+            "cv_f1_macro_std": 0.0
+        }
+    },
+    "saved_path": "C:\\Users\\Mahika\\OneDrive\\Desktop\\Workspace\\Vogue_Vista_FS\\ml_service\\models\\measurement\\female_classifier.joblib"
+}

@@ -1,0 +1,193 @@
+================================================================================
+ VOGUE VISTA: MODEL EVALUATION REPORT
+================================================================================
+Model File: best_bodyshape_classifier.joblib
+Test Split Size: 525 samples
+
+----------------------------------------
+ 1. PERFORMANCE METRICS (TEST SET)
+----------------------------------------
+Accuracy:  0.9467
+Precision: 0.9479 (Weighted)
+Recall:    0.9467 (Weighted)
+F1 Score:  0.9471 (Weighted)
+
+----------------------------------------
+ 2. DETAILED CLASSIFICATION REPORT
+----------------------------------------
+                   precision    recall  f1-score   support
+
+            apple       0.82      0.87      0.84        52
+        hourglass       0.96      0.98      0.97        52
+inverted_triangle       0.98      0.94      0.96       105
+             oval       1.00      0.98      0.99        53
+             pear       0.94      0.92      0.93        53
+        rectangle       0.94      0.93      0.94       105
+        trapezoid       0.91      0.96      0.94        53
+         triangle       1.00      1.00      1.00        52
+
+         accuracy                           0.95       525
+        macro avg       0.94      0.95      0.95       525
+     weighted avg       0.95      0.95      0.95       525
+
+----------------------------------------
+ 3. CONFUSION MATRIX
+----------------------------------------
+Actual \ Pred        | apple      | hourglass  | inverted_t | oval       | pear       | rectangle  | trapezoid  | triangle  
+----------------------------------------------------------------------------------------------------------------------------
+apple                | 45         | 0          | 0          | 0          | 2          | 5          | 0          | 0         
+hourglass            | 0          | 51         | 0          | 0          | 1          | 0          | 0          | 0         
+inverted_triangle    | 0          | 1          | 99         | 0          | 0          | 0          | 5          | 0         
+oval                 | 0          | 0          | 0          | 52         | 0          | 1          | 0          | 0         
+pear                 | 3          | 1          | 0          | 0          | 49         | 0          | 0          | 0         
+rectangle            | 7          | 0          | 0          | 0          | 0          | 98         | 0          | 0         
+trapezoid            | 0          | 0          | 2          | 0          | 0          | 0          | 51         | 0         
+triangle             | 0          | 0          | 0          | 0          | 0          | 0          | 0          | 52        
+
+----------------------------------------
+ 4. TOP 10 CONFIDENT PREDICTION ERRORS
+----------------------------------------
+Found 28 total classification errors out of 525 test samples.
+Showing the 10 errors where the model was most confident in its incorrect guess:
+
+Rank 1: Test Sample Index 329
+  [Actual Class]    : apple
+  [Predicted Class] : pear (Confidence: 0.9288)
+  [Feature Values]  :
+    - gender              : 0.0000
+    - shoulder_to_hip     : -1.0833
+    - waist_to_hip        : 0.0372
+    - shoulder_to_waist   : -0.7629
+    - torso_aspect        : -0.1662
+    - symmetry            : -1.5272
+    - midline_offset      : -0.4401
+  [Probability Distribution] :
+    'apple': 0.0703, 'hourglass': 0.0000, 'inverted_triangle': 0.0000, 'oval': 0.0000, 'pear': 0.9288, 'rectangle': 0.0007, 'trapezoid': 0.0000, 'triangle': 0.0002
+
+Rank 2: Test Sample Index 39
+  [Actual Class]    : inverted_triangle
+  [Predicted Class] : trapezoid (Confidence: 0.8937)
+  [Feature Values]  :
+    - gender              : 1.0000
+    - shoulder_to_hip     : 1.2574
+    - waist_to_hip        : -0.2934
+    - shoulder_to_waist   : 0.8062
+    - torso_aspect        : 2.2088
+    - symmetry            : -0.9676
+    - midline_offset      : -1.0778
+  [Probability Distribution] :
+    'apple': 0.0000, 'hourglass': 0.0000, 'inverted_triangle': 0.1060, 'oval': 0.0000, 'pear': 0.0000, 'rectangle': 0.0003, 'trapezoid': 0.8937, 'triangle': 0.0000
+
+Rank 3: Test Sample Index 302
+  [Actual Class]    : rectangle
+  [Predicted Class] : apple (Confidence: 0.8653)
+  [Feature Values]  :
+    - gender              : 0.0000
+    - shoulder_to_hip     : -0.5860
+    - waist_to_hip        : 0.5848
+    - shoulder_to_waist   : -0.7794
+    - torso_aspect        : -0.3019
+    - symmetry            : 0.3650
+    - midline_offset      : -0.7548
+  [Probability Distribution] :
+    'apple': 0.8653, 'hourglass': 0.0000, 'inverted_triangle': 0.0000, 'oval': 0.0000, 'pear': 0.0055, 'rectangle': 0.1292, 'trapezoid': 0.0000, 'triangle': 0.0000
+
+Rank 4: Test Sample Index 180
+  [Actual Class]    : oval
+  [Predicted Class] : rectangle (Confidence: 0.8387)
+  [Feature Values]  :
+    - gender              : 1.0000
+    - shoulder_to_hip     : -0.7327
+    - waist_to_hip        : 0.9532
+    - shoulder_to_waist   : -1.0223
+    - torso_aspect        : -0.2280
+    - symmetry            : -0.9221
+    - midline_offset      : 0.1976
+  [Probability Distribution] :
+    'apple': 0.0007, 'hourglass': 0.0000, 'inverted_triangle': 0.0000, 'oval': 0.1607, 'pear': 0.0000, 'rectangle': 0.8387, 'trapezoid': 0.0000, 'triangle': 0.0000
+
+Rank 5: Test Sample Index 277
+  [Actual Class]    : trapezoid
+  [Predicted Class] : inverted_triangle (Confidence: 0.8341)
+  [Feature Values]  :
+    - gender              : 1.0000
+    - shoulder_to_hip     : 1.7655
+    - waist_to_hip        : -0.8115
+    - shoulder_to_waist   : 1.6160
+    - torso_aspect        : 0.8485
+    - symmetry            : 0.5189
+    - midline_offset      : 0.1811
+  [Probability Distribution] :
+    'apple': 0.0000, 'hourglass': 0.0000, 'inverted_triangle': 0.8341, 'oval': 0.0000, 'pear': 0.0000, 'rectangle': 0.0000, 'trapezoid': 0.1659, 'triangle': 0.0000
+
+Rank 6: Test Sample Index 509
+  [Actual Class]    : apple
+  [Predicted Class] : rectangle (Confidence: 0.8229)
+  [Feature Values]  :
+    - gender              : 0.0000
+    - shoulder_to_hip     : -0.8444
+    - waist_to_hip        : 0.7928
+    - shoulder_to_waist   : -1.0067
+    - torso_aspect        : 0.8973
+    - symmetry            : 0.6238
+    - midline_offset      : 1.5890
+  [Probability Distribution] :
+    'apple': 0.1763, 'hourglass': 0.0000, 'inverted_triangle': 0.0000, 'oval': 0.0000, 'pear': 0.0008, 'rectangle': 0.8229, 'trapezoid': 0.0000, 'triangle': 0.0000
+
+Rank 7: Test Sample Index 516
+  [Actual Class]    : pear
+  [Predicted Class] : apple (Confidence: 0.8221)
+  [Feature Values]  :
+    - gender              : 0.0000
+    - shoulder_to_hip     : -1.0584
+    - waist_to_hip        : 0.5644
+    - shoulder_to_waist   : -1.0118
+    - torso_aspect        : -0.8434
+    - symmetry            : 0.1166
+    - midline_offset      : -1.3179
+  [Probability Distribution] :
+    'apple': 0.8221, 'hourglass': 0.0000, 'inverted_triangle': 0.0000, 'oval': 0.0000, 'pear': 0.1687, 'rectangle': 0.0092, 'trapezoid': 0.0000, 'triangle': 0.0000
+
+Rank 8: Test Sample Index 349
+  [Actual Class]    : rectangle
+  [Predicted Class] : apple (Confidence: 0.8220)
+  [Feature Values]  :
+    - gender              : 0.0000
+    - shoulder_to_hip     : -0.3477
+    - waist_to_hip        : 0.7021
+    - shoulder_to_waist   : -0.7163
+    - torso_aspect        : -0.5215
+    - symmetry            : 0.9351
+    - midline_offset      : -0.5395
+  [Probability Distribution] :
+    'apple': 0.8220, 'hourglass': 0.0000, 'inverted_triangle': 0.0000, 'oval': 0.0000, 'pear': 0.0004, 'rectangle': 0.1776, 'trapezoid': 0.0000, 'triangle': 0.0000
+
+Rank 9: Test Sample Index 60
+  [Actual Class]    : apple
+  [Predicted Class] : rectangle (Confidence: 0.8041)
+  [Feature Values]  :
+    - gender              : 0.0000
+    - shoulder_to_hip     : -0.3881
+    - waist_to_hip        : 0.9161
+    - shoulder_to_waist   : -0.8387
+    - torso_aspect        : 0.3615
+    - symmetry            : 0.2915
+    - midline_offset      : -0.8542
+  [Probability Distribution] :
+    'apple': 0.1958, 'hourglass': 0.0000, 'inverted_triangle': 0.0000, 'oval': 0.0001, 'pear': 0.0000, 'rectangle': 0.8041, 'trapezoid': 0.0000, 'triangle': 0.0000
+
+Rank 10: Test Sample Index 402
+  [Actual Class]    : inverted_triangle
+  [Predicted Class] : hourglass (Confidence: 0.7891)
+  [Feature Values]  :
+    - gender              : 0.0000
+    - shoulder_to_hip     : 0.1853
+    - waist_to_hip        : -0.5868
+    - shoulder_to_waist   : 0.4007
+    - torso_aspect        : -1.2711
+    - symmetry            : -0.8452
+    - midline_offset      : 0.1148
+  [Probability Distribution] :
+    'apple': 0.0123, 'hourglass': 0.7891, 'inverted_triangle': 0.1912, 'oval': 0.0000, 'pear': 0.0041, 'rectangle': 0.0000, 'trapezoid': 0.0000, 'triangle': 0.0033
+
+================================================================================

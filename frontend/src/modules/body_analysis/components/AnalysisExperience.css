@@ -1,0 +1,49 @@
+/* AnalysisExperience.css - Styling continuation for VogueVista Body Analysis */
+
+.badge-luxury {
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  background-color: rgba(198, 161, 106, 0.05);
+  transition: all 0.4s var(--transition-lux);
+}
+
+.selection-card {
+  transition: transform 0.5s var(--transition-lux),
+              border-color 0.5s var(--transition-lux),
+              box-shadow 0.5s var(--transition-lux),
+              background-color 0.5s var(--transition-lux);
+  background-color: rgba(250, 248, 245, 0.85); /* fallback light */
+}
+
+[data-theme='dark'] .selection-card, .dark .selection-card {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.selection-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--accent-gold);
+  background-color: var(--bg-tertiary);
+  box-shadow: var(--shadow-premium-hover);
+}
+
+[data-theme='dark'] .selection-card:hover, .dark .selection-card:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Hover-triggered icon transformations */
+.selection-card .card-icon-container {
+  transition: all 0.5s var(--transition-lux);
+}
+
+.selection-card:hover .card-icon-container {
+  transform: scale(1.08) rotate(12deg);
+  background-color: var(--accent-gold);
+  color: var(--bg-primary);
+}
+
+/* Luxury line design */
+.thin-gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-gold) 15%, var(--accent-gold) 85%, transparent 100%);
+  width: 100%;
+}

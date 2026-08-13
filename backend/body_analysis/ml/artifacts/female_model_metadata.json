@@ -1,0 +1,165 @@
+{
+    "gender": "female",
+    "selected_model": "Logistic Regression",
+    "feature_schema": [
+        "shoulder_to_hip",
+        "waist_to_hip",
+        "shoulder_to_waist",
+        "torso_aspect",
+        "symmetry",
+        "midline_offset"
+    ],
+    "classes": [
+        "apple",
+        "hourglass",
+        "inverted_triangle",
+        "pear",
+        "rectangle"
+    ],
+    "num_total_samples": 1750,
+    "dataset_class_distribution": {
+        "apple": 350,
+        "hourglass": 350,
+        "inverted_triangle": 350,
+        "pear": 350,
+        "rectangle": 350
+    },
+    "model_performance_comparison": {
+        "Logistic Regression": {
+            "accuracy": 0.9428571428571428,
+            "precision": 0.942563006563427,
+            "recall": 0.9428571428571428,
+            "f1_score": 0.9425579370962698,
+            "confusion_matrix": [
+                [
+                    61,
+                    0,
+                    0,
+                    2,
+                    7
+                ],
+                [
+                    0,
+                    70,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    1,
+                    69,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    70,
+                    0
+                ],
+                [
+                    10,
+                    0,
+                    0,
+                    0,
+                    60
+                ]
+            ],
+            "cv_f1_macro_mean": 0.930774983480517,
+            "cv_f1_macro_std": 0.00936948798205761
+        },
+        "Random Forest": {
+            "accuracy": 0.9228571428571428,
+            "precision": 0.9222294822294822,
+            "recall": 0.9228571428571428,
+            "f1_score": 0.9221255001364435,
+            "confusion_matrix": [
+                [
+                    55,
+                    0,
+                    0,
+                    3,
+                    12
+                ],
+                [
+                    0,
+                    69,
+                    0,
+                    1,
+                    0
+                ],
+                [
+                    0,
+                    1,
+                    69,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    70,
+                    0
+                ],
+                [
+                    10,
+                    0,
+                    0,
+                    0,
+                    60
+                ]
+            ],
+            "cv_f1_macro_mean": 0.9293252089149814,
+            "cv_f1_macro_std": 0.010246720019792398
+        },
+        "Support Vector Machine": {
+            "accuracy": 0.9285714285714286,
+            "precision": 0.9290543259557345,
+            "recall": 0.9285714285714286,
+            "f1_score": 0.9287941804611023,
+            "confusion_matrix": [
+                [
+                    59,
+                    0,
+                    0,
+                    1,
+                    10
+                ],
+                [
+                    0,
+                    69,
+                    0,
+                    1,
+                    0
+                ],
+                [
+                    0,
+                    1,
+                    69,
+                    0,
+                    0
+                ],
+                [
+                    2,
+                    0,
+                    0,
+                    68,
+                    0
+                ],
+                [
+                    10,
+                    0,
+                    0,
+                    0,
+                    60
+                ]
+            ],
+            "cv_f1_macro_mean": 0.9329961131273079,
+            "cv_f1_macro_std": 0.012121211075565274
+        }
+    },
+    "saved_path": "D:\\Projects\\Vogue Vista\\voguevista\\apps\\analysis\\ml\\artifacts\\female_classifier.joblib"
+}

@@ -1,0 +1,271 @@
+{
+    "trapezoid": {
+        "display_name": "Trapezoid Male Body Shape",
+        "description": "Broad shoulders and chest with a slightly tapered waist and hips. Proportionate and versatile build.",
+        "recommended": {
+            "shirts": [
+                "Tailored slim-fit button-down oxford shirts",
+                "Fitted chambray shirts",
+                "Classic polo shirts"
+            ],
+            "t_shirts": [
+                "Fitted crew-neck t-shirts",
+                "Tailored V-neck tees",
+                "Henley shirts"
+            ],
+            "jackets": [
+                "Single-breasted leather jackets",
+                "Fitted denim jackets",
+                "Classic bomber jackets"
+            ],
+            "blazers": [
+                "Single-breasted 2-button tailored blazers",
+                "Unstructured cotton blazers"
+            ],
+            "pants": [
+                "Flat-front tailored trousers",
+                "Slim-straight chinos"
+            ],
+            "jeans": [
+                "Slim-fit dark indigo denim",
+                "Straight-leg dark wash jeans"
+            ],
+            "shorts": [
+                "Tailored chino shorts ending above the knee",
+                "Flat-front casual shorts"
+            ],
+            "formal_wear": [
+                "Tailored 2-piece single-breasted suits with moderate shoulder padding",
+                "Tuxedos with peak lapels"
+            ]
+        },
+        "avoid": {
+            "poor_fitting_garments": [
+                "Overly baggy shapeless clothes hiding natural balance",
+                "Extreme skin-tight garments causing pull lines"
+            ],
+            "necklines": [
+                "Excessively deep scoop necklines",
+                "Overly wide boat neck tops"
+            ],
+            "jacket_styles": [
+                "Heavy double-breasted coats with excessive shoulder padding"
+            ],
+            "trouser_fits": [
+                "Extreme skinny leg jeans distorting natural leg line",
+                "Overly voluminous pleated trousers"
+            ]
+        },
+        "stylist_explanation": "The trapezoid silhouette possesses naturally balanced proportions with broad shoulders and a mild taper to the waist. The styling objective is to maintain this equilibrium through well-tailored cuts that follow the natural contour of the body without adding artificial bulk."
+    },
+    "rectangle": {
+        "display_name": "Rectangle Male Body Shape",
+        "description": "Shoulders, waist, and hips are of relatively uniform width. Straight vertical silhouette.",
+        "recommended": {
+            "shirts": [
+                "Layered button-down shirts with chest flap pockets",
+                "Patterned check shirts",
+                "Flannel shirts"
+            ],
+            "t_shirts": [
+                "Crew-neck t-shirts with horizontal striping",
+                "Pocket tees",
+                "Heavyweight structured t-shirts"
+            ],
+            "jackets": [
+                "Structured bomber jackets with waist ribbing",
+                "Field jackets with chest pockets",
+                "Puffer jackets"
+            ],
+            "blazers": [
+                "Double-breasted blazers with structured shoulders",
+                "Textured tweed blazers"
+            ],
+            "pants": [
+                "Single-pleated trousers adding volume",
+                "Cargo pants with side pockets"
+            ],
+            "jeans": [
+                "Straight-leg jeans with back pocket detailing",
+                "Relaxed slim jeans"
+            ],
+            "shorts": [
+                "Cargo shorts",
+                "Tailored shorts with cuff turn-ups"
+            ],
+            "formal_wear": [
+                "Double-breasted 6-button formal suits",
+                "Structured 2-piece suits with padded shoulders"
+            ]
+        },
+        "avoid": {
+            "poor_fitting_garments": [
+                "Droopy unconstructed oversized garments emphasizing straight lines"
+            ],
+            "necklines": [
+                "Deep V-neck t-shirts elongating the torso vertically"
+            ],
+            "jacket_styles": [
+                "Unconstructed soft-shoulder cardigan jackets lacking shape"
+            ],
+            "trouser_fits": [
+                "Skin-tight skinny trousers highlighting a uniform leg width"
+            ]
+        },
+        "stylist_explanation": "The rectangle silhouette features aligned shoulders, waist, and hips. Stylist strategy focuses on building structure around the shoulders and chest using chest pockets, horizontal layering, double-breasted blazers, and textured fabrics to create a illusion of a tapered torso."
+    },
+    "triangle": {
+        "display_name": "Triangle Male Body Shape",
+        "description": "Shoulders and chest are narrower than the waist and hips. Lower torso is wider than upper body.",
+        "recommended": {
+            "shirts": [
+                "Vertical stripe button-down shirts",
+                "Shirts with epaulettes or shoulder seam detail"
+            ],
+            "t_shirts": [
+                "Structured crew-neck t-shirts with shoulder color blocking",
+                "Heavyweight crew tees"
+            ],
+            "jackets": [
+                "Structured jackets with padded shoulders",
+                "Military-style field jackets"
+            ],
+            "blazers": [
+                "Single-breasted blazers with wide peak lapels and structured shoulders"
+            ],
+            "pants": [
+                "Dark flat-front straight-leg trousers",
+                "Straight chinos"
+            ],
+            "jeans": [
+                "Dark wash straight-leg denim",
+                "Relaxed fit dark jeans"
+            ],
+            "shorts": [
+                "Flat-front casual shorts ending just above the knee"
+            ],
+            "formal_wear": [
+                "Single-breasted 2-button suits with padded shoulders and structured chest canvas"
+            ]
+        },
+        "avoid": {
+            "poor_fitting_garments": [
+                "Tops ending right at the widest point of hips"
+            ],
+            "necklines": [
+                "Polo shirts with tight narrow collars",
+                "High turtlenecks reducing shoulder width"
+            ],
+            "jacket_styles": [
+                "Double-breasted jackets drawing attention to waist width"
+            ],
+            "trouser_fits": [
+                "Tapered or skinny leg trousers accentuating hip width in contrast"
+            ]
+        },
+        "stylist_explanation": "The triangle silhouette has a wider waist/hip region relative to the shoulders. The styling objective is to broaden the shoulders using structured shoulder pads, wide lapels, and horizontal chest details while streamlining the lower body with clean, dark, straight-leg trousers."
+    },
+    "oval": {
+        "display_name": "Oval Male Body Shape",
+        "description": "Fuller midsection and torso with narrower shoulders and legs. Central torso volume.",
+        "recommended": {
+            "shirts": [
+                "Dark vertical stripe oxford shirts",
+                "Vertical pinstripe casual shirts"
+            ],
+            "t_shirts": [
+                "V-neck t-shirts drawing vertical focus",
+                "Dark tone crew-neck tees"
+            ],
+            "jackets": [
+                "Longline single-breasted coats",
+                "Dark unpadded car coats"
+            ],
+            "blazers": [
+                "Single-breasted 2-button dark blazers ending below hip bone"
+            ],
+            "pants": [
+                "Straight dark trousers worn at natural waist",
+                "Flat-front dress trousers"
+            ],
+            "jeans": [
+                "Dark indigo straight-leg denim",
+                "Dark wash relaxed straight jeans"
+            ],
+            "shorts": [
+                "Flat-front Bermuda shorts in dark shades"
+            ],
+            "formal_wear": [
+                "Single-breasted 2-button dark suits with low button stance and vertical pinstripes"
+            ]
+        },
+        "avoid": {
+            "poor_fitting_garments": [
+                "Tight fitted t-shirts clinging to midsection",
+                "Cropped jackets ending at waistline"
+            ],
+            "necklines": [
+                "High tight crew-necks cutting off neck length",
+                "Bold horizontal neck prints"
+            ],
+            "jacket_styles": [
+                "Double-breasted coats creating double fabric volume across waist"
+            ],
+            "trouser_fits": [
+                "Pleated pants adding extra fabric volume at waist",
+                "Skinny jeans highlighting torso contrast"
+            ]
+        },
+        "stylist_explanation": "The oval silhouette features volume concentrated in the midsection. Stylist strategy emphasizes elongating the torso using vertical pinstripes, V-necklines, dark monochromatic color schemes, and single-breasted longline jackets left open to create vertical slimming lines."
+    },
+    "inverted_triangle": {
+        "display_name": "Inverted Triangle Male Body Shape",
+        "description": "Significantly broader shoulders and chest with a narrow waist and hips. Athletic V-taper.",
+        "recommended": {
+            "shirts": [
+                "Slim-fit stretch button-down shirts",
+                "Unstructured linen shirts"
+            ],
+            "t_shirts": [
+                "V-neck & scoop neck t-shirts",
+                "Soft jersey crew-neck tees"
+            ],
+            "jackets": [
+                "Unconstructed soft-shoulder leather jackets",
+                "Casual shirt jackets (shackets)"
+            ],
+            "blazers": [
+                "Unstructured 1-button or 2-button blazers with soft shoulders"
+            ],
+            "pants": [
+                "Straight-leg trousers with subtle pleats",
+                "Wide-leg chinos"
+            ],
+            "jeans": [
+                "Relaxed slim jeans",
+                "Straight-leg medium wash denim"
+            ],
+            "shorts": [
+                "Tailored shorts with slight flare"
+            ],
+            "formal_wear": [
+                "Unpadded 1-button single-breasted suits with soft natural shoulder construction"
+            ]
+        },
+        "avoid": {
+            "poor_fitting_garments": [
+                "Heavy shoulder pads amplifying already broad shoulders"
+            ],
+            "necklines": [
+                "Boat-neck tops or wide necklines extending shoulder width further"
+            ],
+            "jacket_styles": [
+                "Wide peak-lapel double-breasted jackets causing top-heavy distortion"
+            ],
+            "trouser_fits": [
+                "Skin-tight skinny jeans creating an exaggerated top-heavy funnel shape"
+            ]
+        },
+        "stylist_explanation": "The inverted triangle silhouette features an athletic V-taper with prominent shoulder width. Stylist strategy focuses on softening the upper body with unconstructed soft shoulders and V-necklines while adding slight volume to the lower body with straight-leg denim to balance the overall proportions."
+    }
+}
