@@ -27,7 +27,6 @@ click-didyoumean==0.3.1
 click-plugins==1.1.1.2
 click-repl==0.3.0
 clip @ git+https://github.com/openai/CLIP.git@d05afc436d78f1c48dc0dbf8e5980a9d471f35f6
-colorama==0.4.6
 comm==0.2.3
 contourpy==1.3.3
 cryptography==48.0.0
@@ -112,7 +111,7 @@ MarkupSafe==3.0.3
 matplotlib==3.10.9
 matplotlib-inline==0.2.2
 mdurl==0.1.2
-mediapipe==0.10.14
+mediapipe==0.10.35
 mistune==3.2.1
 ml_dtypes==0.5.4
 mpmath==1.3.0
@@ -154,7 +153,6 @@ prompt_toolkit==3.0.52
 proto-plus==1.28.0
 protobuf==7.35.1
 psutil==7.2.2
-psycopg2-binary==2.9.9
 pure_eval==0.2.3
 pyasn1==0.6.3
 pyasn1_modules==0.4.2
@@ -171,8 +169,6 @@ python-dotenv==1.2.2
 python-json-logger==4.1.0
 python-pptx==1.0.2
 PyWavelets==1.9.0
-pywin32==312
-pywinpty==3.0.5
 PyYAML==6.0.3
 pyzmq==27.1.0
 redis==5.0.4
