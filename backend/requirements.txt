@@ -26,8 +26,8 @@ mediapipe==0.10.21
 
 # Machine Learning
 scikit-learn==1.5.1
-torch==2.13.0
-torchvision==0.28.0
+torch==2.7.1
+torchvision==0.22.1
 xgboost==2.1.1
 lightgbm==4.5.0
 catboost==1.2.7
