@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { Activity, Palette, Sparkles, ChevronRight, ArrowLeft } from 'lucide-react';
 import Card from './shared/Card';
@@ -120,7 +120,9 @@ export default function AnalysisSelection({ setScreen }) {
 
               <Button
                 variant="secondary"
-                onClick={() => setScreen('color-analysis')}
+                onClick={() => setScreen('color-analysis')
+                  
+                }
                 style={{ width: '100%', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38BDF8' }}
               >
                 Start Color Analysis <ChevronRight size={16} />
