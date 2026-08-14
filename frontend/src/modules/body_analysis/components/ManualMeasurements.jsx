@@ -537,13 +537,13 @@ export default function ManualMeasurements({ setScreen }) {
                             setGender(e.target.value);
                             if (errors.gender) setErrors({ ...errors, gender: '' });
                           }}
-                          className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                          className={`w-full bg-lux-bg-secondary text-lux-text-primary border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                             errors.gender ? 'border-red-400' : 'border-lux-border-medium'
                           }`}
                         >
-                          <option value="">Select Gender</option>
-                          <option value="female">Female</option>
-                          <option value="male">Male</option>
+                          <option value="" className="bg-lux-bg-secondary text-lux-text-primary">Select Gender</option>
+                          <option value="female" className="bg-lux-bg-secondary text-lux-text-primary">Female</option>
+                          <option value="male" className="bg-lux-bg-secondary text-lux-text-primary">Male</option>
                         </select>
                         {errors.gender && <span className="text-[10px] text-red-400 ml-3">{errors.gender}</span>}
                       </div>
@@ -560,7 +560,7 @@ export default function ManualMeasurements({ setScreen }) {
                           placeholder="e.g. 172"
                           value={formData.height}
                           onChange={handleInputChange}
-                          className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                          className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                             errors.height ? 'border-red-400 font-semibold text-red-400' : 'border-lux-border-medium'
                           }`}
                         />
@@ -579,7 +579,7 @@ export default function ManualMeasurements({ setScreen }) {
                           placeholder="e.g. 92"
                           value={formData.bust}
                           onChange={handleInputChange}
-                          className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                          className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                             errors.bust ? 'border-red-400 font-semibold text-red-400' : 'border-lux-border-medium'
                           }`}
                         />
@@ -598,7 +598,7 @@ export default function ManualMeasurements({ setScreen }) {
                           placeholder="e.g. 68"
                           value={formData.waist}
                           onChange={handleInputChange}
-                          className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                          className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                             errors.waist ? 'border-red-400 font-semibold text-red-400' : 'border-lux-border-medium'
                           }`}
                         />
@@ -617,7 +617,7 @@ export default function ManualMeasurements({ setScreen }) {
                           placeholder="e.g. 96"
                           value={formData.hip}
                           onChange={handleInputChange}
-                          className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                          className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                             errors.hip ? 'border-red-400 font-semibold text-red-400' : 'border-lux-border-medium'
                           }`}
                         />
@@ -636,7 +636,7 @@ export default function ManualMeasurements({ setScreen }) {
                           placeholder="e.g. 38"
                           value={formData.shoulder}
                           onChange={handleInputChange}
-                          className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                          className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-5 py-3 text-sm focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                             errors.shoulder ? 'border-red-400 font-semibold text-red-400' : 'border-lux-border-medium'
                           }`}
                         />
@@ -678,7 +678,7 @@ export default function ManualMeasurements({ setScreen }) {
                                   placeholder="e.g. 36"
                                   value={formData.neck}
                                   onChange={handleInputChange}
-                                  className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                                  className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                                     errors.neck ? 'border-red-400 text-red-400' : 'border-lux-border-medium'
                                   }`}
                                 />
@@ -697,7 +697,7 @@ export default function ManualMeasurements({ setScreen }) {
                                   placeholder="e.g. 61"
                                   value={formData.armLength}
                                   onChange={handleInputChange}
-                                  className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                                  className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                                     errors.armLength ? 'border-red-400 text-red-400' : 'border-lux-border-medium'
                                   }`}
                                 />
@@ -716,7 +716,7 @@ export default function ManualMeasurements({ setScreen }) {
                                   placeholder="e.g. 81"
                                   value={formData.inseam}
                                   onChange={handleInputChange}
-                                  className={`w-full bg-[#FAF8F5]/80 dark:bg-[#1C1A22] border rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
+                                  className={`w-full bg-lux-bg-secondary text-lux-text-primary placeholder-lux-text-muted/60 border rounded-full px-4 py-2.5 text-xs focus:outline-none focus:border-lux-gold focus:ring-1 focus:ring-lux-gold/30 transition-all duration-300 ${
                                     errors.inseam ? 'border-red-400 text-red-400' : 'border-lux-border-medium'
                                   }`}
                                 />

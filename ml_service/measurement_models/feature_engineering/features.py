@@ -151,9 +151,12 @@ def derive(landmarks: dict, segmentation_mask=None) -> dict:  # noqa: C901
         if w_hip > 0:
             hip_width = w_hip
 
-        # Outer waist width
+        # Outer waist width — scan 42–62% of torso height from shoulder.
+        # 42% avoids the ribcage narrowing; 62% stops before the hip flare begins.
+        # The 38% start (tried previously) scans the ribcage which is naturally narrow
+        # and inflates waist_definition for all body types.
         wz_start = int(sh_y + 0.42 * (hip_y - sh_y))
-        wz_end   = int(sh_y + 0.68 * (hip_y - sh_y))
+        wz_end   = int(sh_y + 0.62 * (hip_y - sh_y))
         wz_vals = [measure_width(y, is_waist=True) for y in range(wz_start, wz_end + 1)]
         wz_valid = [v for v in wz_vals if v > 0]
         if wz_valid:

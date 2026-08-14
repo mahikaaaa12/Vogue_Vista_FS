@@ -84,24 +84,49 @@ def predict(feature_dict: dict, gender: str = "female", use_rules: bool = False)
 
 
 def _fallback_prediction(f: dict, gender: str) -> dict:
-    sh_hip = f.get("shoulder_to_hip", 1.0)
+    """
+    Anatomical multi-feature fallback when no trained model is loadable.
+    Calibrated to real MediaPipe+segmentation output ranges.
+    """
     if gender == "male":
+        sh_hip = f.get("shoulder_to_hip", 1.2)
         shape = "trapezoid" if sh_hip > 1.05 else "rectangle"
         classes = ["trapezoid", "rectangle", "triangle", "oval", "inverted_triangle"]
     else:
-        shape = "hourglass" if sh_hip > 0.98 else "pear"
+        s2h = f.get("shoulder_to_hip", 1.0)
+        w2h = f.get("waist_to_hip", 0.70)
+        wd  = f.get("waist_definition", 0.30)
+        ta  = f.get("torso_aspect", 0.65)
+        c2h = f.get("chest_to_hip", 1.0)
+
+        # Apple: wide waist relative to hips, low waist_definition
+        if w2h > 0.80 and wd < 0.26:
+            shape = "apple"
+        # Hourglass: defined waist + high chest_to_hip + moderate torso_aspect
+        elif wd > 0.24 and c2h > 1.08 and ta < 0.72:
+            shape = "hourglass"
+        # Inverted Triangle: high torso_aspect (lean long body) + high chest_to_hip
+        elif ta > 0.78 and c2h > 1.02:
+            shape = "inverted_triangle"
+        # Pear: wide chest-to-hip (hips wider) + low torso_aspect
+        elif c2h > 1.05 and s2h > 1.03:
+            shape = "pear"
+        # Rectangle: catch-all for uniform proportions
+        else:
+            shape = "rectangle"
+
         classes = ["hourglass", "pear", "rectangle", "inverted_triangle", "apple"]
-        
-    probs = {s: 0.20 for s in classes}
-    probs[shape] = 0.75
-    
+
+    probs = {s: 0.05 for s in classes}
+    probs[shape] = 0.72
+
     top_predictions = [
         {"shape": s, "probability": probs[s]}
         for s in sorted(classes, key=lambda x: probs[x], reverse=True)
     ]
     return {
         "predicted_shape": shape,
-        "confidence": 0.75,
+        "confidence": 0.72,
         "top_predictions": top_predictions,
         "probabilities": probs,
     }

@@ -1,38 +1,44 @@
-# Django & REST API Core
+# Django
 Django==5.2.15
 django-mongodb-backend==5.2.3
+djangorestframework==3.15.1
+django-cors-headers==4.9.0
+python-dotenv==1.2.2
+
+# Database
 pymongo==4.17.0
 dnspython==2.8.0
-django-cors-headers==4.9.0
-djangorestframework==3.15.1
-python-dotenv==1.2.2
 
 # Deployment
 gunicorn==22.0.0
 whitenoise==6.6.0
 
-# Scientific & Utility (Aligned for TensorFlow 2.18.0)
-numpy==2.0.2
-pandas==3.0.5
-Pillow==11.3.0
-opencv-python-headless==4.10.0.82
-scipy==1.17.1
+# Core Scientific
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.13.1
 joblib==1.4.2
+Pillow==10.2.0
 
-# Machine Learning & AI (Fully Compatible with NumPy 2.0.2)
-scikit-learn==1.5.0
-xgboost==3.2.0
-lightgbm==4.7.0
-catboost==1.2.10
-mediapipe==0.10.14
+# Computer Vision
+opencv-python-headless==4.10.0.84
+mediapipe==0.10.21
+
+# Machine Learning
+scikit-learn==1.5.1
 torch==2.13.0
 torchvision==0.28.0
-onnxruntime==1.28.0
-onnx==1.22.0
-facenet-pytorch==2.6.0
-google-generativeai==0.8.6
-tensorflow==2.18.0
+xgboost==2.1.1
+lightgbm==4.5.0
+catboost==1.2.7
 
-# API Service Layer (Optional Dev Server)
+# ONNX
+onnx==1.17.0
+onnxruntime==1.19.2
+
+# Gemini
+google-generativeai==0.8.6
+
+# API
 fastapi==0.115.0
 uvicorn==0.30.0

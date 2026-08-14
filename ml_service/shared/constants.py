@@ -8,14 +8,12 @@ FEMALE_CLASSES = ["apple", "hourglass", "inverted_triangle", "pear", "rectangle"
 MALE_CLASSES = ["trapezoid", "rectangle", "triangle", "oval", "inverted_triangle"]
 
 FEATURE_KEYS = [
-    "shoulder_to_hip",    # primary shape discriminator
-    "waist_to_hip",       # waist prominence relative to hips
-    "shoulder_to_waist",  # shoulder to waist relationship
-    "chest_to_hip",       # chest vs hip — key for pear / inverted_triangle / oval
-    "torso_aspect",       # body height-to-width proportions
-    "symmetry",           # pose quality signal
-    "midline_offset",     # lateral tilt signal
-    "waist_definition",   # waist pinch — key for hourglass vs rectangle
+    "shoulder_to_hip",    # primary shape discriminator — pear(<0.92) vs IT(>1.09)
+    "waist_to_hip",       # waist depth relative to hips — hourglass is very low here
+    "shoulder_to_waist",  # key for hourglass (high) vs apple (low)
+    "chest_to_hip",       # reinforces pear (low) and inverted_triangle (high)
+    "waist_definition",   # strongest hourglass signal; apple/rect have very low values
+    "torso_aspect",       # torso height-to-width ratio
 ]
 
 FEMALE_FEATURE_COLS = [

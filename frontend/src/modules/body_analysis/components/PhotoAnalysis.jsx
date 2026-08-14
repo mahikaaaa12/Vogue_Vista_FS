@@ -187,7 +187,7 @@ export default function PhotoAnalysis({ setScreen }) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.5 }}
-                  className="rounded-[32px] border border-lux-border-light bg-[#FAF8F5]/60 dark:bg-white/5 backdrop-blur-[24px] p-8 md:p-10 shadow-premium flex flex-col gap-6 text-left"
+                  className="rounded-[32px] border border-lux-border-light bg-[var(--glass-bg)] backdrop-blur-[24px] p-8 md:p-10 shadow-premium flex flex-col gap-6 text-left"
                 >
                   <div className="flex gap-4 items-center mb-1">
                     <div className="p-3 bg-lux-bg-secondary border border-lux-border-light rounded-full text-lux-gold shrink-0">
@@ -336,7 +336,7 @@ export default function PhotoAnalysis({ setScreen }) {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
-                  className="rounded-[32px] border border-lux-border-light bg-[#FAF8F5]/60 dark:bg-white/5 backdrop-blur-[24px] p-8 md:p-10 shadow-premium flex flex-col gap-6 text-left"
+                  className="rounded-[32px] border border-lux-border-light bg-[var(--glass-bg)] backdrop-blur-[24px] p-8 md:p-10 shadow-premium flex flex-col gap-6 text-left"
                 >
                   <div className="flex justify-between items-center pb-4 border-b border-lux-border-light">
                     <div>
@@ -389,7 +389,7 @@ export default function PhotoAnalysis({ setScreen }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.6 }}
-                  className="rounded-[32px] border border-lux-border-light bg-[#FAF8F5]/70 dark:bg-white/5 backdrop-blur-[24px] p-8 md:p-10 shadow-premium flex flex-col gap-6 text-left"
+                  className="rounded-[32px] border border-lux-border-light bg-[var(--glass-bg)] backdrop-blur-[24px] p-8 md:p-10 shadow-premium flex flex-col gap-6 text-left"
                 >
                   <div className="flex items-center gap-3 pb-4 border-b border-lux-border-light">
                     <div className="p-2.5 bg-lux-text-primary text-lux-bg-primary rounded-full shrink-0">
@@ -453,7 +453,7 @@ export default function PhotoAnalysis({ setScreen }) {
 
           {/* Right Column: Visualizer Box */}
           <div className="lg:col-span-7 flex flex-col justify-center min-h-[450px] md:min-h-[550px]">
-            <div className="w-full h-full relative rounded-[32px] overflow-hidden border border-lux-border-light bg-[#FAF8F5]/40 dark:bg-[#16141C]/35 backdrop-blur-[24px] shadow-premium flex items-center justify-center">
+            <div className="w-full h-full relative rounded-[32px] overflow-hidden border border-lux-border-light bg-[var(--glass-bg)] backdrop-blur-[24px] shadow-premium flex items-center justify-center">
               {photo ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <img 

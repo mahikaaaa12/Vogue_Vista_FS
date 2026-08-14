@@ -28,6 +28,8 @@
   --glass-border: rgba(168, 149, 124, 0.18);
   --glass-blur: 18px;
   --glow-color: rgba(168, 149, 124, 0.06);
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --border-color: rgba(168, 149, 124, 0.18);
   
   /* Fonts */
   --font-editorial: 'Cormorant Garamond', Georgia, serif;
@@ -69,6 +71,8 @@
   --glow-color: rgba(201, 166, 107, 0.04);
   --cta-bg: #F7F3EE;
   --cta-text: #211C24;
+  --card-bg: rgba(35, 30, 28, 0.72);
+  --border-color: rgba(201, 166, 107, 0.15);
 }
 
 /* Global Reset & Background Setup */

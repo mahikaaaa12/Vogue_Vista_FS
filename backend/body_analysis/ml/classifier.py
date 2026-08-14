@@ -20,10 +20,8 @@ FEATURE_KEYS = [
     "waist_to_hip",
     "shoulder_to_waist",
     "chest_to_hip",
-    "torso_aspect",
-    "symmetry",
-    "midline_offset",
     "waist_definition",
+    "torso_aspect",
 ]
 
 

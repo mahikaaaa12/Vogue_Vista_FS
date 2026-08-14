@@ -16,7 +16,7 @@ from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 from .ml.pipeline import run as run_pipeline, PipelineError
 from body_analysis.recommendations.recommendation_engine import generate_recommendations
-from body_analysis.intelligence.body_traits import extract_traits
+from body_analysis.intelligence.body_traits import extract_traits, generate_explanation
 from body_analysis.intelligence.proportion_engine import compute_scores
 
 logger = logging.getLogger(__name__)
@@ -111,8 +111,14 @@ class AnalysisPhotoView(APIView):
 
         label = (result.get("predicted_shape") or "").lower()
         features = result.get("features", {})
+        measurements = result.get("measurements", {})
 
-        traits = extract_traits(features)
+        # Merge all derived signals so the explanation engine has full context
+        # (features dict now includes chest_to_hip + waist_definition from pipeline.py)
+        all_features = {**measurements, **features}
+
+        traits = extract_traits(all_features)
+        explanation = generate_explanation(all_features, label)
         scores = compute_scores(features)
         recommendations = generate_recommendations(gender, label, features)
         pres = _PRESENTATION.get(label, _DEFAULT_PRESENTATION)
@@ -132,6 +138,8 @@ class AnalysisPhotoView(APIView):
             "description": pres["description"],
             "proportions": _proportion_bars(result.get("measurements"), result.get("features")),
             "traits": traits,
+            "anatomical_reasoning": explanation["reasoning"],
+            "key_measurements": explanation["key_measurements"],
             "scores": scores,
             "recommendations": recommendations,
             "probabilities": result.get("probabilities", {}),
@@ -194,6 +202,7 @@ class AnalyzeMeasurementsView(APIView):
         shape_title = label.replace("_", " ").title() or "Undetermined"
 
         traits = extract_traits(feature_dict)
+        explanation = generate_explanation(feature_dict, label)
         scores = compute_scores(feature_dict)
         recommendations = generate_recommendations(gender, label, feature_dict)
         pres = _PRESENTATION.get(label, _DEFAULT_PRESENTATION)
@@ -211,6 +220,8 @@ class AnalyzeMeasurementsView(APIView):
             "description": pres["description"],
             "proportions": _proportion_bars({"shoulder_width": shoulder, "waist_width": waist, "hip_width": hip, "torso_height": torso}, feature_dict),
             "traits": traits,
+            "anatomical_reasoning": explanation["reasoning"],
+            "key_measurements": explanation["key_measurements"],
             "scores": scores,
             "recommendations": recommendations,
         }, status=status.HTTP_200_OK)

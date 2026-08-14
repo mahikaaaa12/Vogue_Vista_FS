@@ -81,7 +81,7 @@ export default function AnalysisSelection({ setScreen }) {
                 onClick={() => setScreen('body-analysis')}
                 style={{ width: '100%' }}
               >
-                Start Body Analysis <ChevronRight size={16} />
+                Start Body Analysis
               </Button>
             </Card>
           </motion.div>
@@ -121,11 +121,11 @@ export default function AnalysisSelection({ setScreen }) {
               <Button
                 variant="secondary"
                 onClick={() => setScreen('color-analysis')
-                  
+
                 }
                 style={{ width: '100%', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38BDF8' }}
               >
-                Start Color Analysis <ChevronRight size={16} />
+                Start Color Analysis
               </Button>
             </Card>
           </motion.div>
