@@ -506,6 +506,15 @@ export default function PhotoAnalysis({ setScreen }) {
                           {(result?.shape === 'Rectangle' || result?.body_shape === 'Rectangle' || String(result?.shape || result?.body_shape).toLowerCase() === 'rectangle') && (
                             <path d="M42 70 L78 70 M42 70 L43 115 L42 160 L78 160 L77 115 L78 70 Z M42 160 L42 240 M78 160 L78 240" fill="none" stroke="currentColor" strokeWidth="1.5" />
                           )}
+                          {(result?.shape === 'Trapezoid' || result?.body_shape === 'Trapezoid' || String(result?.shape || result?.body_shape).toLowerCase() === 'trapezoid') && (
+                            <path d="M34 70 L86 70 M34 70 L42 120 L44 160 L76 160 L78 120 L86 70 Z M44 160 L44 240 M76 160 L76 240" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                          )}
+                          {(result?.shape === 'Triangle' || result?.body_shape === 'Triangle' || String(result?.shape || result?.body_shape).toLowerCase() === 'triangle') && (
+                            <path d="M46 70 L74 70 M46 70 L44 120 L36 160 L84 160 L76 120 L74 70 Z M36 160 L38 240 M84 160 L82 240" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                          )}
+                          {(result?.shape === 'Oval' || result?.body_shape === 'Oval' || String(result?.shape || result?.body_shape).toLowerCase() === 'oval') && (
+                            <path d="M42 70 L78 70 M42 70 L34 115 L40 160 L80 160 L86 115 L78 70 Z M40 160 L42 240 M80 160 L78 240" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                          )}
                         </svg>
                         
                         <div className="absolute top-2 right-2 text-[7px] font-accent text-lux-gold tracking-widest text-right leading-relaxed">

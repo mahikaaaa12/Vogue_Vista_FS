@@ -35,6 +35,22 @@ _PRESENTATION = {
     "oval":        {"emoji": "⬏", "description": "Fuller torso volume with a soft midsection profile."}
 }
 
+ALLOWED_MALE_SHAPES = {
+    "Triangle",
+    "Inverted Triangle",
+    "Trapezoid",
+    "Oval",
+    "Rectangle"
+}
+
+ALLOWED_FEMALE_SHAPES = {
+    "Apple",
+    "Hourglass",
+    "Inverted Triangle",
+    "Pear",
+    "Rectangle"
+}
+
 _DEFAULT_PRESENTATION = {"emoji": "◈", "description": "A distinctive silhouette read directly from your proportions."}
 
 def _proportion_bars(measurements: dict, features: dict) -> dict:
@@ -127,6 +143,37 @@ class AnalysisPhotoView(APIView):
         confidence_pct = int(round(confidence_val * 100))
         shape_title = label.replace("_", " ").title() or "Undetermined"
 
+        # Validation: male requests must ONLY return valid male shapes
+        if gender == "male":
+            if shape_title not in ALLOWED_MALE_SHAPES:
+                logger.error(
+                    "Male analysis produced invalid shape '%s' (not in allowed %s). Raw: %s",
+                    shape_title, ALLOWED_MALE_SHAPES, result
+                )
+                return Response(
+                    {"detail": f"Male body shape analysis must only return one of {list(sorted(ALLOWED_MALE_SHAPES))}, got '{shape_title}'"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+        else:
+            if shape_title not in ALLOWED_FEMALE_SHAPES:
+                logger.error(
+                    "Female analysis produced invalid shape '%s' (not in allowed %s). Raw: %s",
+                    shape_title, ALLOWED_FEMALE_SHAPES, result
+                )
+                return Response(
+                    {"detail": f"Female body shape analysis must only return one of {list(sorted(ALLOWED_FEMALE_SHAPES))}, got '{shape_title}'"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+
+        logger.info(
+            "Body Shape Analysis - Gender: %s | Model loaded: %s | Raw prediction: %s | Mapped prediction: %s | Allowed classes: %s",
+            gender.upper(),
+            f"{gender}_classifier.joblib",
+            result.get("predicted_shape"),
+            shape_title,
+            ", ".join(sorted(ALLOWED_MALE_SHAPES if gender == "male" else ALLOWED_FEMALE_SHAPES))
+        )
+
         return Response({
             "status": "success",
             "gender": gender,
@@ -200,6 +247,37 @@ class AnalyzeMeasurementsView(APIView):
         label = prediction["label"].lower()
         confidence = prediction["confidence"]
         shape_title = label.replace("_", " ").title() or "Undetermined"
+
+        # Validation: male requests must ONLY return valid male shapes
+        if gender == "male":
+            if shape_title not in ALLOWED_MALE_SHAPES:
+                logger.error(
+                    "Male measurement analysis produced invalid shape '%s' (not in allowed %s). Raw: %s",
+                    shape_title, ALLOWED_MALE_SHAPES, prediction
+                )
+                return Response(
+                    {"detail": f"Male body shape analysis must only return one of {list(sorted(ALLOWED_MALE_SHAPES))}, got '{shape_title}'"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+        else:
+            if shape_title not in ALLOWED_FEMALE_SHAPES:
+                logger.error(
+                    "Female measurement analysis produced invalid shape '%s' (not in allowed %s). Raw: %s",
+                    shape_title, ALLOWED_FEMALE_SHAPES, prediction
+                )
+                return Response(
+                    {"detail": f"Female body shape analysis must only return one of {list(sorted(ALLOWED_FEMALE_SHAPES))}, got '{shape_title}'"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+
+        logger.info(
+            "Measurement Body Shape Analysis - Gender: %s | Model loaded: %s | Raw prediction: %s | Mapped prediction: %s | Allowed classes: %s",
+            gender.upper(),
+            f"{gender}_classifier.joblib",
+            label,
+            shape_title,
+            ", ".join(sorted(ALLOWED_MALE_SHAPES if gender == "male" else ALLOWED_FEMALE_SHAPES))
+        )
 
         traits = extract_traits(feature_dict)
         explanation = generate_explanation(feature_dict, label)

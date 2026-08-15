@@ -47,15 +47,44 @@ def predict(feature_dict: dict, gender: str, use_rules: bool = False) -> dict:
         logger.warning("Failed to load model %s: %s", model_path, e)
 
     if model is None:
-        # Fallback to general model or heuristic
-        logger.warning("Using fallback heuristic for prediction")
-        sh_hip = feature_dict.get("shoulder_to_hip", 1.0)
+        logger.warning("Using fallback heuristic for %s prediction", gender)
         if gender == "male":
-            shape = "trapezoid" if sh_hip > 1.05 else "rectangle"
+            s2h = feature_dict.get("shoulder_to_hip", 1.15)
+            w2h = feature_dict.get("waist_to_hip", 0.85)
+            wd  = feature_dict.get("waist_definition", 0.20)
+            c2h = feature_dict.get("chest_to_hip", 1.15)
+
+            if s2h > 1.22 and w2h < 0.75:
+                shape = "inverted_triangle"
+            elif s2h < 1.05 and w2h > 0.88:
+                shape = "triangle"
+            elif w2h > 0.92 and wd < 0.18:
+                shape = "oval"
+            elif s2h > 1.15 and c2h > 1.10:
+                shape = "trapezoid"
+            else:
+                shape = "rectangle"
+            classes = ["trapezoid", "rectangle", "triangle", "oval", "inverted_triangle"]
         else:
-            shape = "hourglass" if sh_hip > 0.98 else "pear"
-        classes = ["hourglass", "pear", "rectangle", "inverted_triangle", "apple"] if gender == "female" else ["trapezoid", "rectangle", "triangle", "oval", "inverted_triangle"]
-        probs = {s: 0.20 for s in classes}
+            s2h = feature_dict.get("shoulder_to_hip", 1.0)
+            w2h = feature_dict.get("waist_to_hip", 0.70)
+            wd  = feature_dict.get("waist_definition", 0.30)
+            ta  = feature_dict.get("torso_aspect", 0.65)
+            c2h = feature_dict.get("chest_to_hip", 1.0)
+
+            if w2h > 0.80 and wd < 0.26:
+                shape = "apple"
+            elif wd > 0.24 and c2h > 1.08 and ta < 0.72:
+                shape = "hourglass"
+            elif ta > 0.78 and c2h > 1.02:
+                shape = "inverted_triangle"
+            elif c2h > 1.05 and s2h > 1.03:
+                shape = "pear"
+            else:
+                shape = "rectangle"
+            classes = ["hourglass", "pear", "rectangle", "inverted_triangle", "apple"]
+
+        probs = {s: 0.05 for s in classes}
         probs[shape] = 0.75
         return {
             "label": shape,
@@ -64,7 +93,14 @@ def predict(feature_dict: dict, gender: str, use_rules: bool = False) -> dict:
         }
 
     probs = model.predict_proba(x)[0]
-    classes = list(model.steps[1][1].classes_)
+    if hasattr(model, "classes_"):
+        classes = list(model.classes_)
+    elif hasattr(model, "steps") and hasattr(model.steps[-1][1], "classes_"):
+        classes = list(model.steps[-1][1].classes_)
+    elif hasattr(model, "steps") and hasattr(model.steps[1][1], "classes_"):
+        classes = list(model.steps[1][1].classes_)
+    else:
+        classes = ["hourglass", "pear", "rectangle", "inverted_triangle", "apple"] if gender == "female" else ["trapezoid", "rectangle", "triangle", "oval", "inverted_triangle"]
     
     order = np.argsort(probs)[::-1]
     top_idx = int(order[0])

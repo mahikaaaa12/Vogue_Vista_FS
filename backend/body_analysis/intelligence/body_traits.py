@@ -65,6 +65,7 @@ def generate_explanation(features: dict, predicted_shape: str) -> dict:
     shape_key = (predicted_shape or "").lower().replace(" ", "_")
 
     _TEMPLATES = {
+        # Female & General
         "hourglass": (
             "Your shoulder-to-hip ratio of {s2h:.2f} shows near-perfect balance between "
             "your upper and lower body frames. The clearest signal is your waist definition "
@@ -105,6 +106,28 @@ def generate_explanation(features: dict, predicted_shape: str) -> dict:
             "waist, and hip measurements run on a similar vertical axis. Your shoulder-to-waist "
             "ratio of {s2w:.2f} confirms that the waist is proportionally close to the shoulder "
             "width. This straight, athletic frame is the signature of the rectangle shape."
+        ),
+        # Male-specific shapes
+        "trapezoid": (
+            "Your shoulder-to-hip ratio of {s2h:.2f} shows a broad, athletic shoulder and chest "
+            "line that tapers cleanly into a well-proportioned waist and hips. Your chest-to-hip "
+            "ratio of {c2h:.2f} indicates an expansive upper torso with balanced lower proportions. "
+            "Your waist-to-hip ratio of {w2h:.2f} and waist definition of {wd:.2f} reflect a "
+            "natural, versatile athletic taper — the defining hallmark of the trapezoid silhouette."
+        ),
+        "triangle": (
+            "Your shoulder-to-hip ratio of {s2h:.2f} indicates that your lower torso and hip line "
+            "are slightly broader than your upper shoulder frame. Your chest-to-hip ratio of {c2h:.2f} "
+            "shows a narrower upper chest line relative to the lower body, with your waist-to-hip "
+            "ratio of {w2h:.2f} confirming that the lower frame anchors the silhouette. This "
+            "clean anatomical distribution is the signature of the triangle body shape."
+        ),
+        "oval": (
+            "Your waist-to-hip ratio of {w2h:.2f} and waist definition score of {wd:.2f} "
+            "indicate central torso volume with a soft, rounded midsection profile. Your "
+            "shoulder-to-hip ratio of {s2h:.2f} and chest-to-hip ratio of {c2h:.2f} show a "
+            "harmonious, continuous curve through the torso rather than sharp angular lines, "
+            "which characterizes the oval silhouette."
         ),
     }
 

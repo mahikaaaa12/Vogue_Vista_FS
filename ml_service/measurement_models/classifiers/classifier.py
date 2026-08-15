@@ -52,9 +52,6 @@ def predict(feature_dict: dict, gender: str = "female", use_rules: bool = False)
         model = _get_female_model()
 
     if model is None:
-        model = _get_general_model()
-
-    if model is None:
         # Graceful fallback heuristic if no classifier joblib model is present
         return _fallback_prediction(feature_dict, gender)
 
@@ -62,6 +59,8 @@ def predict(feature_dict: dict, gender: str = "female", use_rules: bool = False)
     # Handle both pipeline and direct estimator classes_ attribute access
     if hasattr(model, "classes_"):
         classes = list(model.classes_)
+    elif hasattr(model, "steps") and hasattr(model.steps[-1][1], "classes_"):
+        classes = list(model.steps[-1][1].classes_)
     elif hasattr(model, "steps") and hasattr(model.steps[1][1], "classes_"):
         classes = list(model.steps[1][1].classes_)
     else:
@@ -89,8 +88,28 @@ def _fallback_prediction(f: dict, gender: str) -> dict:
     Calibrated to real MediaPipe+segmentation output ranges.
     """
     if gender == "male":
-        sh_hip = f.get("shoulder_to_hip", 1.2)
-        shape = "trapezoid" if sh_hip > 1.05 else "rectangle"
+        s2h = f.get("shoulder_to_hip", 1.15)
+        w2h = f.get("waist_to_hip", 0.85)
+        wd  = f.get("waist_definition", 0.20)
+        s2w = f.get("shoulder_to_waist", 1.35)
+        c2h = f.get("chest_to_hip", 1.15)
+
+        # 1. Inverted Triangle: High V-taper (broad shoulders + narrow hips/waist)
+        if s2h > 1.22 and w2h < 0.75:
+            shape = "inverted_triangle"
+        # 2. Triangle: Hips/waist wider than shoulders/chest
+        elif s2h < 1.05 and w2h > 0.88:
+            shape = "triangle"
+        # 3. Oval: Waist prominent, low definition, central volume
+        elif w2h > 0.92 and wd < 0.18:
+            shape = "oval"
+        # 4. Trapezoid: Broad shoulders with balanced, natural taper
+        elif s2h > 1.15 and c2h > 1.10:
+            shape = "trapezoid"
+        # 5. Rectangle: Uniform width across shoulders, waist, hips
+        else:
+            shape = "rectangle"
+
         classes = ["trapezoid", "rectangle", "triangle", "oval", "inverted_triangle"]
     else:
         s2h = f.get("shoulder_to_hip", 1.0)

@@ -91,6 +91,8 @@ export async function getBodyProfile(taskId, backendData = null) {
       description: backendData.description || '',
       emoji: backendData.emoji || '',
       traits: backendData.traits || [],
+      anatomical_reasoning: backendData.anatomical_reasoning || '',
+      key_measurements: backendData.key_measurements || {},
       scores: backendData.scores || {},
       proportions: backendData.proportions || { shoulderWaistRatio: 1.25, waistHipRatio: 0.72 },
       probabilities: backendData.probabilities || {},
@@ -99,7 +101,9 @@ export async function getBodyProfile(taskId, backendData = null) {
     };
   }
 
-  const shapes = ['Hourglass', 'Pear', 'Rectangle', 'Inverted Triangle', 'Apple'];
+  const femaleShapes = ['Hourglass', 'Pear', 'Rectangle', 'Inverted Triangle', 'Apple'];
+  const maleShapes = ['Trapezoid', 'Triangle', 'Inverted Triangle', 'Oval', 'Rectangle'];
+  const shapes = gender === 'male' ? maleShapes : femaleShapes;
   const mockShape = shapes[Math.floor(Math.random() * shapes.length)];
   
   const recommendationsMap = {
@@ -132,13 +136,32 @@ export async function getBodyProfile(taskId, backendData = null) {
       "Structured jackets worn open to create long vertical lines",
       "Flowy fabrics like silk, soft cotton, or fine knits",
       "Avoid horizontal stripes and high-contrast waist belts"
+    ],
+    Trapezoid: [
+      "Tailored blazers and slim-fit shirts to complement natural proportions",
+      "Straight-leg trousers and classic chinos",
+      "Crewneck sweaters and polo collars",
+      "Avoid oversized boxy silhouettes that hide proportions"
+    ],
+    Triangle: [
+      "Structured shoulder jackets and horizontal chest patterns",
+      "Straight-leg dark trousers and minimalist bottoms",
+      "Layered outerwear to add upper body structure",
+      "Avoid skinny-fit pants and clingy polo shirts"
+    ],
+    Oval: [
+      "Vertical pinstripe blazers and V-neck sweaters",
+      "Straight-cut trousers and dark wash jeans",
+      "Single-breasted open jackets to create clean vertical lines",
+      "Avoid horizontal chest stripes and tight polo collars"
     ]
   };
 
   return {
-    height: 172,
-    weight: 62,
+    height: 178,
+    weight: 75,
     shape: mockShape,
+    body_shape: mockShape,
     proportions: {
       shoulderWaistRatio: 1.25,
       waistHipRatio: 0.72
@@ -150,7 +173,7 @@ export async function getBodyProfile(taskId, backendData = null) {
       hips: 94,
       inseam: 79
     },
-    recommendations: recommendationsMap[mockShape]
+    recommendations: recommendationsMap[mockShape] || []
   };
 }
 
