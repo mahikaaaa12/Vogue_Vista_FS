@@ -1,5 +1,5 @@
 // authAPI.js - Centralized Authentication Service
-const API_BASE_URL = 'http://localhost:8000/api/auth';
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/auth`;
 
 export async function loginUser(credentials) {
   try {

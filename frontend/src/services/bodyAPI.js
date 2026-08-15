@@ -1,5 +1,5 @@
 // bodyAPI.js - Centralized Body Analysis API Service
-const API_BASE_URL = 'http://localhost:8000/api/body';
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/body`;
 
 export async function predictBodyShape(measurements) {
   try {
