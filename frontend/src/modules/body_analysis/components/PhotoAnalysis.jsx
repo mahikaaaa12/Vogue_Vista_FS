@@ -28,7 +28,7 @@ export default function PhotoAnalysis({ setScreen }) {
 
   const validateSelection = () => {
     if (!selectedGender) {
-      setValidationError("Please select Male or Female before uploading an image.");
+      setValidationError("Please select Male or Female classifier.");
       return false;
     }
     setValidationError('');
@@ -73,6 +73,7 @@ export default function PhotoAnalysis({ setScreen }) {
   };
 
   const startAnalysisFlow = async (file) => {
+    if (!validateSelection()) return;
     try {
       setPhoto(URL.createObjectURL(file));
       setScanState('uploading');
@@ -109,7 +110,7 @@ export default function PhotoAnalysis({ setScreen }) {
       }
       
       addLog("SYNCHRONIZING RESULTS...");
-      const finalResult = await getBodyProfile(analyzeResp.taskId, uploadResp.backendData);
+      const finalResult = await getBodyProfile(analyzeResp.taskId, uploadResp.backendData, selectedGender);
       setProgress(100);
       addLog("SILHOUETTE PROFILE SYNCHRONIZED SUCCESSFULLY.");
       

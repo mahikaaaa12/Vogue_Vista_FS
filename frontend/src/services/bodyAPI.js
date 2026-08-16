@@ -1,5 +1,6 @@
 // bodyAPI.js - Centralized Body Analysis API Service
-const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api/body`;
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = `${BASE_URL.replace(/\/+$/, '')}/api/body`;
 
 export async function predictBodyShape(measurements) {
   try {
@@ -15,24 +16,30 @@ export async function predictBodyShape(measurements) {
     console.warn("bodyAPI predictBodyShape fallback:", error);
   }
 
+  const gender = (measurements?.gender || 'female').toLowerCase();
+  const defaultShape = gender === 'male' ? 'Trapezoid' : 'Hourglass';
+  const defaultRecs = gender === 'male' 
+    ? ['Structured blazers', 'Tailored trousers', 'Crew neck sweaters']
+    : ['High-waisted skirts', 'Belted coats', 'Wrap dresses'];
+
   return {
     status: 'success',
-    body_shape: 'Hourglass',
+    gender: gender,
+    body_shape: defaultShape,
+    shape: defaultShape,
     confidence: 0.96,
-    recommendations: [
-      'High-waisted skirts',
-      'Belted coats',
-      'Wrap dresses'
-    ]
+    recommendations: defaultRecs
   };
 }
 
-export async function uploadBodyImages(files) {
+export async function uploadBodyImages(files, gender = 'female') {
   try {
+    const safeGender = (gender || 'female').toLowerCase();
     const formData = new FormData();
     if (files && files.length > 0) {
       formData.append('image', files[0]);
     }
+    formData.append('gender', safeGender);
 
     const response = await fetch(`${API_BASE_URL}/predict/`, {
       method: 'POST',

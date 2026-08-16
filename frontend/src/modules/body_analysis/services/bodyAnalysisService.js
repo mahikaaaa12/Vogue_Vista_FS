@@ -1,7 +1,8 @@
 // bodyAnalysisService.js
 // Production API service connecting Frontend -> Django REST Backend -> Explicit Model Predictions
 
-const API_BASE_URL = 'http://localhost:8000/api/body-analysis';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = `${BASE_URL.replace(/\/+$/, '')}/api/body-analysis`;
 
 /**
  * Uploads image to Django backend with explicit gender parameter routing
@@ -11,12 +12,15 @@ const API_BASE_URL = 'http://localhost:8000/api/body-analysis';
  */
 export async function uploadImages(files, gender = 'female') {
   try {
+    const safeGender = (gender || 'female').toLowerCase();
     const formData = new FormData();
     if (files && files.length > 0) {
       formData.append('image', files[0]);
     }
-    formData.append('gender', gender);
+    formData.append('gender', safeGender);
     
+    console.log(`[PhotoAnalysis] Uploading to: ${API_BASE_URL}/predict/ with gender: ${safeGender}`);
+
     const response = await fetch(`${API_BASE_URL}/predict/`, {
       method: 'POST',
       body: formData,
@@ -60,9 +64,10 @@ export async function analyzeBody(imageGroupRef) {
  * Gets calibrated body shape profile and recommendations
  * @param {string} taskId - The task ID returned by analyzeBody
  * @param {object} backendData - Optional data returned by POST upload response
+ * @param {string} gender - Gender ('male' | 'female')
  * @returns {Promise<Object>}
  */
-export async function getBodyProfile(taskId, backendData = null) {
+export async function getBodyProfile(taskId, backendData = null, gender = 'female') {
   if (backendData) {
     let recs = [];
     const rawRecs = backendData.recommendations;
@@ -82,6 +87,7 @@ export async function getBodyProfile(taskId, backendData = null) {
     return {
       height: 172,
       weight: 62,
+      gender: backendData.gender || gender,
       shape: backendData.shape || backendData.body_shape,
       body_shape: backendData.body_shape || backendData.shape,
       confidence: backendData.confidence,
@@ -101,9 +107,10 @@ export async function getBodyProfile(taskId, backendData = null) {
     };
   }
 
+  const effectiveGender = (gender || 'female').toLowerCase();
   const femaleShapes = ['Hourglass', 'Pear', 'Rectangle', 'Inverted Triangle', 'Apple'];
   const maleShapes = ['Trapezoid', 'Triangle', 'Inverted Triangle', 'Oval', 'Rectangle'];
-  const shapes = gender === 'male' ? maleShapes : femaleShapes;
+  const shapes = effectiveGender === 'male' ? maleShapes : femaleShapes;
   const mockShape = shapes[Math.floor(Math.random() * shapes.length)];
   
   const recommendationsMap = {
